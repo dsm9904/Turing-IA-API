@@ -10,12 +10,14 @@ let registrarUsuario = async(req, res) => { //Para registrar el usuario
     usuario.email = req.body.email;
     usuario.rol = req.body.rol;
     let existencia = await usuariosModelo.find({ email: usuario.email }).exec();
-    if (!existencia) {
+    if (existencia.length) {
+        res.status(500).send({ mesagge: 'Ya existe un usuario registrado con ese email' });
+    } else {
         if (req.body.password) { //Si recibe el campo pasword
             bcrypt.hash(req.body.password, 10, (err, hash) => {
                 usuario.password = hash;
                 if (usuario.nombre != null && usuario.email != null && usuario.rol != null) {
-                    //guardar el ususario en BD
+                    //guardar el usuario en BD
                     usuario.save().
                     then(respuesta =>
                         res.status(200).send({ id: respuesta._id, nombre: respuesta.nombre, email: respuesta.email }),
@@ -27,8 +29,6 @@ let registrarUsuario = async(req, res) => { //Para registrar el usuario
         } else {
             res.status(500).send({ mesagge: 'Introduce la contraseña' });
         }
-    } else {
-        res.status(500).send({ mesagge: 'Ya existe un usuario registrado con ese email' });
     }
 }
 

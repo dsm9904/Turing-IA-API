@@ -44,7 +44,7 @@ let getLenguajesC = async(req, res) => {
     var categoriaLenguajes = req.params.categoria;
     if (categoriaLenguajes != null) {
         let lenguajes = await lenguajesModelo.find({ categoria: categoriaLenguajes }).exec();
-        if (lenguajes) {
+        if (lenguajes.length) {
             console.log(lenguajes)
             res.status(200).send(lenguajes)
         } else {
@@ -56,7 +56,7 @@ let getLenguajesC = async(req, res) => {
 }
 let getLenguajes = async(req, res) => {
     let lenguajes = await lenguajesModelo.find().exec();
-    if (lenguajes) {
+    if (lenguajes.length) {
         console.log(lenguajes)
         res.status(200).send(lenguajes)
     } else {

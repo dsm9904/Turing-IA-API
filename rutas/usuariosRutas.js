@@ -1,9 +1,10 @@
 var express = require('express');
 var usuariosControlador = require('../controlador/usuariosControlador');
 
-var multipart = require('connect-multiparty');
-//var dir_fotos = multipart({ uploadDir: './cargas/menu' });
+//var multipart = require('connect-multiparty');
+//var dir_fotos = multipart({ uploadDir: './cargas/usuarios' });
 var router = express.Router();
+
 
 router.post('/registro', usuariosControlador.registrarUsuario);
 router.get('/login', usuariosControlador.accesoUsuario);
