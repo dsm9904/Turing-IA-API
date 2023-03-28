@@ -1,7 +1,5 @@
 const bcrypt = require('bcrypt');
 var usuariosModelo = require('../modelo/usuarios');
-var fs = require('fs');
-var path = require('path');
 
 let registrarUsuario = async(req, res) => { //Para registrar el usuario
     var usuario = new usuariosModelo(); //Se instancia el modelo de usuarios

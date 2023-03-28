@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 var lenguajesModelo = require('../modelo/lenguajes');
 const subirImagen = require('../helpers/subirImagen');
 const eliminarImagen = require('../helpers/eliminarImg');
