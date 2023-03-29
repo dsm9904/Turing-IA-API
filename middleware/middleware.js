@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const { check, validationResult } = require('express-validator');
+
+router.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Content-Type', 'application/json');
+    next();
+  });
+
 router.use('/registroUsuario', [check('email').isEmail(),
     check('password').isLength({ min: 6 }).isAlphanumeric()
 ], (req, res, next) => {

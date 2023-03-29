@@ -56,8 +56,7 @@ let getLenguajesC = async(req, res) => {
 let getLenguajes = async(req, res) => {
     let lenguajes = await lenguajesModelo.find().exec();
     if (lenguajes.length) {
-        console.log(lenguajes)
-        res.status(200).send(lenguajes)
+        res.status(200).set().send(lenguajes)
     } else {
         res.status(404).send({ mesagge: 'No existe la categoria' })
     }

@@ -1,12 +1,5 @@
 const fs = require('fs');
 
-/**
- * Convierte un string base64 recibido de Volley a una imagen JPG
- * 
- * @param {string} imagenBase64 Imagen codificada en base64
- * @param {string} tipo Si la imagen es de un 'usuario' o un 'servicio'
- * @returns {(string | boolean)} Nombre de la imagen (String) o false si no pudo subirla
- */
 const subirImagen = (imagenBase64, tipo) => {
     var path;
     try {
