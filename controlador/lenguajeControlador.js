@@ -32,6 +32,9 @@ let getImagen = (req, res) => {
     console.log(imageFile);
     fs.exists(rutaFoto, (existe) => {
         if (existe) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', '*');
+            res.setHeader('Content-Type', 'image/gif');
             res.sendFile(path.resolve(rutaFoto));
         } else {
             res.status(404).send({ mesagge: 'No has cargado una imagen con ese nombre' });
@@ -56,7 +59,7 @@ let getLenguajesC = async(req, res) => {
 let getLenguajes = async(req, res) => {
     let lenguajes = await lenguajesModelo.find().exec();
     if (lenguajes.length) {
-        res.status(200).set().send(lenguajes)
+        res.status(200).send(lenguajes)
     } else {
         res.status(404).send({ mesagge: 'No existe la categoria' })
     }

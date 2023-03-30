@@ -9,6 +9,7 @@ router.use(function(req, res, next) {
     next();
   });
 
+
 router.use('/registroUsuario', [check('email').isEmail(),
     check('password').isLength({ min: 6 }).isAlphanumeric()
 ], (req, res, next) => {
